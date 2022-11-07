@@ -12,8 +12,8 @@ const Header = () => {
           alt=""
         />
       </div>
-      <div className="banner-text flex justify-center text-7xl text-center text-white">
-        <div className="">
+      <div className="banner-text ">
+        <div className="text-4xl lg:text-7xl text-center text-white">
           <h2>
             The World's <br /> Best{" "}
             <i className="font-bold text-[#9EC23C]">Psychological</i> <br />{" "}

@@ -2,6 +2,7 @@ import { Card } from "flowbite-react";
 import React from "react";
 import Header from "../../Shared/Header";
 import ServiceCard from "../Services/ServiceCard";
+import Features from "./Features";
 import OurCompany from "./OurCompany";
 
 const Home = () => {
@@ -20,8 +21,8 @@ const Home = () => {
         <ServiceCard></ServiceCard>
         <ServiceCard></ServiceCard>
       </div>
-
       <OurCompany></OurCompany>
+      <Features></Features>
     </div>
   );
 };
