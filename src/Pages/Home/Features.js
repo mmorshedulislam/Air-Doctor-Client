@@ -5,7 +5,7 @@ import { RiFirstAidKitLine, RiPsychotherapyLine } from "react-icons/ri";
 
 const Features = () => {
   return (
-    <div>
+    <div className="my-10">
       <div className="text-center">
         <h2 className="text-2xl font-bold">FEATURES</h2>
         <p>THAT'S WHY YOU SHOULD CHOOSE ME AS YOUR PERSONAL DOCTOR.</p>
