@@ -5,7 +5,9 @@ import ReviewCard from "./ReviewCard";
 const Reviews = ({ service }) => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?serviceId=${service._id}`)
+    fetch(
+      `https://air-doctor-server-mmorshedulislam.vercel.app/reviewServiceId?serviceId=${service._id}`
+    )
       .then((res) => res.json())
       .then((data) => setReviews(data.reviews));
   }, [service._id]);

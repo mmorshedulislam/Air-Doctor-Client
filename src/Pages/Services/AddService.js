@@ -9,7 +9,7 @@ const AddService = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch("http://localhost:5000/services", {
+    fetch("https://air-doctor-server-mmorshedulislam.vercel.app/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -18,8 +18,8 @@ const AddService = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        toast.success("Service added successfully.")
-        console.log(data)
+        toast.success("Service added successfully.");
+        console.log(data);
       });
   };
 

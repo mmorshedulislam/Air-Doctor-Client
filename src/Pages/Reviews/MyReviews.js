@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+import MyReviewTable from "./MyReviewTable";
 
 const MyReviews = () => {
-    return (
-        <div>
-            <h2>My Reviews</h2>
-        </div>
-    );
+  return (
+    <div className="my-20">
+      <MyReviewTable></MyReviewTable>
+    </div>
+  );
 };
 
 export default MyReviews;
