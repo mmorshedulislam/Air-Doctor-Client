@@ -6,6 +6,7 @@ import { AuthContext } from "../Contexts/AuthProvider";
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const location = useLocation();
+  
   if (loading) {
     return <Spinner aria-label="Extra large spinner example" size="xl" />;
   }
