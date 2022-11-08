@@ -1,14 +1,16 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import Reviews from "../Reviews/Reviews";
+import DetailAService from "./DetailAService";
 
 const ServiceDetails = () => {
   const service = useLoaderData().service;
-  console.log(service);
+
   return (
     <div>
-      <h2 className="text-center text-3xl">
-        I am now Service Detail Page. {service?.title}
-      </h2>
+      <DetailAService service={service}></DetailAService>
+      <hr class="my-8 w-full h-1 bg-gray-200 border-0 dark:bg-gray-700" />
+      <Reviews service={service}></Reviews>
     </div>
   );
 };
