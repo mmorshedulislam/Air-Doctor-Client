@@ -1,7 +1,10 @@
 import { Label, Textarea, TextInput } from "flowbite-react";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
+import { AuthContext } from "../../Contexts/AuthProvider";
 
 const AddService = () => {
+  const { user } = useContext(AuthContext);
   const [service, setService] = useState({});
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -14,9 +17,12 @@ const AddService = () => {
       body: JSON.stringify(service),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        toast.success("Service added successfully.")
+        console.log(data)
+      });
   };
-  
+
   const handleInputBlur = (event) => {
     const field = event.target.name;
     const value = event.target.value;
@@ -39,6 +45,20 @@ const AddService = () => {
               name="title"
               placeholder="Title"
               type="text"
+              sizing="md"
+            />
+          </div>
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="Email" value="Email" />
+            </div>
+            <TextInput
+              onBlur={handleInputBlur}
+              id="email"
+              name="email"
+              defaultValue={user?.email}
+              readOnly
+              type="email"
               sizing="md"
             />
           </div>
@@ -70,22 +90,21 @@ const AddService = () => {
               sizing="md"
             />
           </div>
-
-          <div id="textarea">
-            <div className="mb-2 block">
-              <Label htmlFor="description" value="Service Description" />
-            </div>
-            <Textarea
-              onBlur={handleInputBlur}
-              id="description"
-              name="description"
-              placeholder="Service Description..."
-              required={true}
-              rows={4}
-            />
-          </div>
         </div>
-        <div className="w-full">
+        <div id="textarea">
+          <div className="mb-2 block mt-5">
+            <Label htmlFor="description" value="Service Description" />
+          </div>
+          <Textarea
+            onBlur={handleInputBlur}
+            id="description"
+            name="description"
+            placeholder="Service Description..."
+            required={true}
+            rows={4}
+          />
+        </div>
+        <div className="w-full my-5">
           <input
             className="py-3 px-4 text-white bg-blue-500 rounded ml-auto"
             type="submit"

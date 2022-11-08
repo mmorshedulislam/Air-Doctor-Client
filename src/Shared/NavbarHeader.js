@@ -47,8 +47,12 @@ const NavbarHeader = () => {
               </span>
             </Dropdown.Header>
             <Dropdown.Item>Profile</Dropdown.Item>
-            <Dropdown.Item>My Reviews</Dropdown.Item>
-            <Dropdown.Item><Link to='/addService'>Add Service</Link></Dropdown.Item>
+            <Dropdown.Item>
+              <Link to="myReviews">My Reviews</Link>{" "}
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Link to="/addService">Add Service</Link>
+            </Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item onClick={handleLogOut}>Sign out</Dropdown.Item>
           </Dropdown>

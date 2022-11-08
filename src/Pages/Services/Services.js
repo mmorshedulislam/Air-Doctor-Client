@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ServiceCard from "./ServiceCard";
 
 const Services = () => {
+  const [services, setServices] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/services")
+      .then((res) => res.json())
+      .then((data) => setServices(data.services));
+  }, []);
+  console.log(services);
   return (
     <div>
       <div className="section-heading my-10">
@@ -12,12 +19,9 @@ const Services = () => {
         </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 px-4 lg:px-0">
-        <ServiceCard></ServiceCard>
-        <ServiceCard></ServiceCard>
-        <ServiceCard></ServiceCard>
-        <ServiceCard></ServiceCard>
-        <ServiceCard></ServiceCard>
-        <ServiceCard></ServiceCard>
+        {services.map((service) => (
+          <ServiceCard key={service._id} service={service}></ServiceCard>
+        ))}
       </div>
     </div>
   );
