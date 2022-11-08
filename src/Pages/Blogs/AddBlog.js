@@ -21,13 +21,16 @@ const AddBlog = () => {
       .then((data) => {
         toast.success("Blog added successfully.");
         console.log(data);
+        event.target.reset();
       });
   };
   const handleInputBlur = (event) => {
     const field = event.target.name;
     const value = event.target.value;
-    const email = emailRef.current.value; 
-    const newBlog = { ...blog, email };
+    const name = user?.displayName;
+    const email = emailRef.current.value;
+    const userImg = user?.photoURL;
+    const newBlog = { name, email, userImg, ...blog };
     newBlog[field] = value;
     setBlog(newBlog);
   };
@@ -66,45 +69,32 @@ const AddBlog = () => {
 
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="photo-url" value="Photo URL" />
+              <Label htmlFor="photo-url" value="Blog Photo URL" />
             </div>
             <TextInput
               onBlur={handleInputBlur}
               id="photo-url"
-              name="image"
-              placeholder="Photo URL"
+              name="blogImg"
+              placeholder="Blog Photo URL"
               type="text"
               sizing="md"
             />
           </div>
-
-          <div>
+          <div id="textarea">
             <div className="mb-2 block">
-              <Label htmlFor="Price" value="Price" />
+              <Label htmlFor="description" value="Blog Description" />
             </div>
-            <TextInput
+            <Textarea
               onBlur={handleInputBlur}
-              id="Price"
-              name="price"
-              placeholder="Price"
-              type="text"
-              sizing="md"
+              id="description"
+              name="description"
+              placeholder="Blog Description..."
+              required={true}
+              rows={4}
             />
           </div>
         </div>
-        <div id="textarea">
-          <div className="mb-2 block mt-5">
-            <Label htmlFor="description" value="Service Description" />
-          </div>
-          <Textarea
-            onBlur={handleInputBlur}
-            id="description"
-            name="description"
-            placeholder="Service Description..."
-            required={true}
-            rows={4}
-          />
-        </div>
+
         <div className="w-full my-5">
           <input
             className="py-3 px-4 text-white bg-blue-500 rounded ml-auto"

@@ -2,6 +2,7 @@ import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthProvider";
+import { FaUserCircle } from "react-icons/fa";
 
 const NavbarHeader = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -29,11 +30,7 @@ const NavbarHeader = () => {
             label={
               <Avatar
                 alt="User"
-                img={
-                  user
-                    ? user?.photoURL
-                    : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQk59qr_v7TPsRo6b8BvUDuIe32lD-SuTo7L-fmlokDjL-WUtGwor5TeIBoWgi9fClcj10&usqp=CAU"
-                }
+                img={user ? user?.photoURL : <FaUserCircle />}
                 rounded={true}
               />
             }
