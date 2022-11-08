@@ -28,7 +28,7 @@ const NavbarHeader = () => {
             inline={true}
             label={
               <Avatar
-                alt="User settings"
+                alt="User"
                 img={
                   user
                     ? user?.photoURL
