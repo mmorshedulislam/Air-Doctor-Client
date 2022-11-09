@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const TableRow = ({ review, handleDelete }) => {
   const { _id, serviceId, title, description } = review;
+  console.log(review);
   const [service, setService] = useState([]);
   useEffect(() => {
     fetch(`http://localhost:5000/serviceId?serviceId=${serviceId}`)
@@ -23,7 +24,7 @@ const TableRow = ({ review, handleDelete }) => {
       <Table.Cell>{description}</Table.Cell>
       <Table.Cell>
         <Link
-          to="/myReviews"
+          to={`/updateReview/${_id}`}
           className="font-medium text-blue-600 hover:underline dark:text-blue-500"
         >
           Update

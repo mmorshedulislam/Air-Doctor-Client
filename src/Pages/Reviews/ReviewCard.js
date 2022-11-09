@@ -21,7 +21,7 @@ const ReviewCard = ({ review }) => {
           <div className="space-y-0.5 font-medium dark:text-white text-left">
             <div>{name}</div>
             <div className="text-sm font-light text-gray-500 dark:text-gray-400">
-              Developer at Open AI
+              Software Engineer at Google Mama!
             </div>
           </div>
         </figcaption>

@@ -30,7 +30,9 @@ const Reviews = ({ service }) => {
           Please login to add your Valuable opinion or review.
         </p>
       ) : (
-        ""
+        <p className="text-center text-2xl">
+          Please give your Feedback with add a Review
+        </p>
       )}
       <div className="w-40 mx-auto my-10 flex justify-center">
         <Link

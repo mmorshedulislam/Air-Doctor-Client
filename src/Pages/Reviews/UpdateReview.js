@@ -5,22 +5,23 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 
 const UpdateReview = () => {
-  const service = useLoaderData().service;
+  const review = useLoaderData();
+  const { title, description, rating } = review;
   const { user } = useContext(AuthContext);
-  const [review, setReview] = useState({});
+  const [updateReview, setUpdateReview] = useState({});
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost:5000/reviews", {
-      method: "POST",
+    fetch(`http://localhost:5000/updateReview/${review._id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(review),
+      body: JSON.stringify(updateReview),
     })
       .then((res) => res.json())
       .then((data) => {
-        toast.success("Review added successfully.");
+        toast.success("Review Update successfully.");
         console.log(data);
         event.target.reset();
       });
@@ -29,13 +30,11 @@ const UpdateReview = () => {
   const handleInputBlur = (event) => {
     const field = event.target.name;
     const value = event.target.value;
-    const serviceId = service._id;
     const name = user?.displayName;
     const email = user?.email;
-    const photo = user?.photoURL;
-    const newReview = { serviceId, name, email, photo, ...review };
+    const newReview = { name, email, ...updateReview };
     newReview[field] = value;
-    setReview(newReview);
+    setUpdateReview(newReview);
   };
   return (
     <div>
@@ -85,6 +84,7 @@ const UpdateReview = () => {
               placeholder="Review Title"
               type="text"
               sizing="md"
+              defaultValue={title}
               required={true}
             />
           </div>
@@ -100,6 +100,7 @@ const UpdateReview = () => {
               placeholder="Out of 5"
               type="text"
               sizing="md"
+              defaultValue={rating}
             />
           </div>
         </div>
@@ -114,6 +115,7 @@ const UpdateReview = () => {
             placeholder="Review Description..."
             required={true}
             rows={4}
+            defaultValue={description}
           />
         </div>
         <div className="w-full my-5">
