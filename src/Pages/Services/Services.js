@@ -1,9 +1,11 @@
-import { Label, Pagination, Select } from "flowbite-react";
-import React, { useEffect, useState } from "react";
+import { Label, Pagination, Select, Spinner } from "flowbite-react";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../Contexts/AuthProvider";
 import useSetTitle from "../../CustomHooks/useSetTitle";
 import ServiceCard from "./ServiceCard";
 
 const Services = () => {
+  const { loading } = useContext(AuthContext);
   useSetTitle("Services");
   const [services, setServices] = useState([]);
   const [count, setCount] = useState(0);
@@ -21,8 +23,17 @@ const Services = () => {
       .then((data) => {
         setCount(data.count);
         setServices(data.services);
+        loading(false);
       });
-  }, [perPage, currentPage]);
+  }, [perPage, currentPage, loading]);
+
+  if (loading) {
+    return (
+      <div className="text-center">
+        <Spinner aria-label="Extra large spinner example" size="xl" />
+      </div>
+    );
+  }
 
   return (
     <div>

@@ -27,7 +27,7 @@ const MyReviewTable = () => {
       .then((data) => {
         setReviews(data.reviews);
       });
-  }, [user?.email]);
+  }, [user?.email, logOut]);
 
   const handleDelete = (id) => {
     const agree = window.confirm("Are you want to delete the review?");

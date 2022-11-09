@@ -13,7 +13,7 @@ const Register = () => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
-    const photo = form.photo.value;
+    const photo = form.photo.value || 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
     const email = form.email.value;
     const password = form.password.value;
 

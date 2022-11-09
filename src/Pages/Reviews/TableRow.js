@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 
 const TableRow = ({ review, handleDelete }) => {
   const { _id, serviceId, title, description } = review;
-  console.log(review);
+
   const [service, setService] = useState([]);
+  console.log(service);
   useEffect(() => {
     fetch(`http://localhost:5000/serviceId?serviceId=${serviceId}`)
       .then((res) => res.json())
@@ -18,7 +19,7 @@ const TableRow = ({ review, handleDelete }) => {
   return (
     <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
       <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-        {serviceId}
+        {service.title}
       </Table.Cell>
       <Table.Cell>{title}</Table.Cell>
       <Table.Cell>{description}</Table.Cell>

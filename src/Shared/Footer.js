@@ -18,15 +18,14 @@ const Footers = () => {
               <div>
                 <Footer.Title title="about" />
                 <Footer.LinkGroup col={true}>
-                  <Footer.Link href="#">Flowbite</Footer.Link>
-                  <Footer.Link href="#">Tailwind CSS</Footer.Link>
+                  <Footer.Link href="#">About Us</Footer.Link>
                 </Footer.LinkGroup>
               </div>
               <div>
                 <Footer.Title title="Follow us" />
                 <Footer.LinkGroup col={true}>
                   <Footer.Link href="#">Github</Footer.Link>
-                  <Footer.Link href="#">Discord</Footer.Link>
+                  <Footer.Link href="#">Facebook</Footer.Link>
                 </Footer.LinkGroup>
               </div>
               <div>
