@@ -1,4 +1,3 @@
-import { Card } from "flowbite-react";
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Header from "../../Shared/Header";
@@ -8,7 +7,6 @@ import OurCompany from "./OurCompany";
 
 const Home = () => {
   const services = useLoaderData();
-
   return (
     <div>
       <Header></Header>
@@ -33,7 +31,6 @@ const Home = () => {
           See All
         </Link>
       </div>
-
       <Features></Features>
     </div>
   );

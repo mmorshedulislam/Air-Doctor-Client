@@ -1,53 +1,63 @@
 import { Label, Textarea, TextInput } from "flowbite-react";
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
+import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 
-const AddService = () => {
+const UpdateReview = () => {
+  const service = useLoaderData().service;
   const { user } = useContext(AuthContext);
-  const [service, setService] = useState({});
+  const [review, setReview] = useState({});
+
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    fetch("http://localhost:5000/services", {
+    fetch("http://localhost:5000/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(service),
+      body: JSON.stringify(review),
     })
       .then((res) => res.json())
       .then((data) => {
-        toast.success("Service added successfully.");
+        toast.success("Review added successfully.");
         console.log(data);
+        event.target.reset();
       });
   };
 
   const handleInputBlur = (event) => {
     const field = event.target.name;
     const value = event.target.value;
-    const newService = { ...service };
-    newService[field] = value;
-    setService(newService);
+    const serviceId = service._id;
+    const name = user?.displayName;
+    const email = user?.email;
+    const photo = user?.photoURL;
+    const newReview = { serviceId, name, email, photo, ...review };
+    newReview[field] = value;
+    setReview(newReview);
   };
   return (
     <div>
-      <h2 className="text-center text-5xl my-6">Add a Service</h2>
+      <h2 className="text-center text-5xl my-6">Update Your Review</h2>
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="title" value="Title" />
+              <Label htmlFor="Your Name" value="Your Name" />
             </div>
             <TextInput
               onBlur={handleInputBlur}
-              id="title"
-              name="title"
-              placeholder="Title"
+              id="name"
+              name="name"
+              placeholder="Your Name"
+              defaultValue={user?.displayName}
               type="text"
               sizing="md"
+              required={true}
             />
           </div>
+
           <div>
             <div className="mb-2 block">
               <Label htmlFor="Email" value="Email" />
@@ -60,32 +70,34 @@ const AddService = () => {
               readOnly
               type="email"
               sizing="md"
+              required={true}
             />
           </div>
 
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="photo-url" value="Photo URL" />
+              <Label htmlFor="title" value="Review Title" />
             </div>
             <TextInput
               onBlur={handleInputBlur}
-              id="photo-url"
-              name="image"
-              placeholder="Photo URL"
+              id="title"
+              name="title"
+              placeholder="Review Title"
               type="text"
               sizing="md"
+              required={true}
             />
           </div>
 
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="Price" value="Price" />
+              <Label htmlFor="Rating" value="Rating" />
             </div>
             <TextInput
               onBlur={handleInputBlur}
-              id="Price"
-              name="price"
-              placeholder="Price"
+              id="Rating"
+              name="rating"
+              placeholder="Out of 5"
               type="text"
               sizing="md"
             />
@@ -93,13 +105,13 @@ const AddService = () => {
         </div>
         <div id="textarea">
           <div className="mb-2 block mt-5">
-            <Label htmlFor="description" value="Service Description" />
+            <Label htmlFor="description" value="Review Description" />
           </div>
           <Textarea
             onBlur={handleInputBlur}
             id="description"
             name="description"
-            placeholder="Service Description..."
+            placeholder="Review Description..."
             required={true}
             rows={4}
           />
@@ -116,4 +128,4 @@ const AddService = () => {
   );
 };
 
-export default AddService;
+export default UpdateReview;

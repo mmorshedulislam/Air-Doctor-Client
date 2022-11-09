@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layouts/Main";
 import AddBlog from "../Pages/Blogs/AddBlog";
 import Blogs from "../Pages/Blogs/Blogs";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
@@ -16,13 +17,11 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
-        loader: () =>
-          fetch(
-            "https://air-doctor-server-mmorshedulislam.vercel.app/service3"
-          ),
+        loader: () => fetch("http://localhost:5000/service3"),
         element: <Home></Home>,
       },
       {
@@ -32,9 +31,7 @@ export const router = createBrowserRouter([
       {
         path: "/service/:id",
         loader: ({ params }) =>
-          fetch(
-            `https://air-doctor-server-mmorshedulislam.vercel.app/service/${params.id}`
-          ),
+          fetch(`http://localhost:5000/service/${params.id}`),
         element: <ServiceDetails></ServiceDetails>,
       },
       {
@@ -64,14 +61,15 @@ export const router = createBrowserRouter([
       {
         path: "/addReview/:id",
         loader: ({ params }) =>
-          fetch(
-            `https://air-doctor-server-mmorshedulislam.vercel.app/service/${params.id}`
-          ),
+          fetch(`http://localhost:5000/service/${params.id}`),
         element: (
           <PrivateRoute>
             <AddReview></AddReview>
           </PrivateRoute>
         ),
+      },
+      {
+        path: '/updateReview/:id', 
       },
       {
         path: "/login",

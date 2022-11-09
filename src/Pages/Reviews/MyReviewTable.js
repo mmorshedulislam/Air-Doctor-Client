@@ -3,19 +3,38 @@ import React, { useContext, useEffect, useState } from "react";
 import TableRow from "./TableRow";
 import { AiFillCloseSquare } from "react-icons/ai";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import toast from "react-hot-toast";
 
 const MyReviewTable = () => {
   const { user } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
+  const [count, setCount] = useState(0);
+
   useEffect(() => {
-    fetch(
-      `https://air-doctor-server-mmorshedulislam.vercel.app/reviewsEmail?email=${user?.email}`
-    )
+    fetch(`http://localhost:5000/reviewsEmail?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setReviews(data.reviews);
+        setCount(data.count);
       });
   }, [user?.email]);
+
+  const handleDelete = (id) => {
+    const agree = window.confirm("Are you want to delete the review?");
+    if (agree) {
+      fetch(`http://localhost:5000/review/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
+            const remaining = reviews.filter((review) => review._id !== id);
+            setReviews(remaining);
+            toast.success("Deleted Successfully.");
+          }
+        });
+    }
+  };
   return (
     <div>
       <Table striped={true}>
@@ -30,7 +49,11 @@ const MyReviewTable = () => {
         </Table.Head>
         <Table.Body className="divide-y">
           {reviews.map((review) => (
-            <TableRow key={review._id} review={review}></TableRow>
+            <TableRow
+              key={review._id}
+              review={review}
+              handleDelete={handleDelete}
+            ></TableRow>
           ))}
         </Table.Body>
       </Table>

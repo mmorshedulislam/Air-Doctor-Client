@@ -3,17 +3,17 @@ import React, { useEffect, useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-const TableRow = ({ review }) => {
-  const { serviceId, title, description } = review;
+const TableRow = ({ review, handleDelete }) => {
+  const { _id, serviceId, title, description } = review;
   const [service, setService] = useState([]);
   useEffect(() => {
-    fetch(
-      `https://air-doctor-server-mmorshedulislam.vercel.app/serviceId?serviceId=${serviceId}`
-    )
+    fetch(`http://localhost:5000/serviceId?serviceId=${serviceId}`)
       .then((res) => res.json())
-      .then((data) => setService(data));
+      .then((data) => {
+        setService(data);
+      });
   }, [serviceId]);
-  console.log(service);
+
   return (
     <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
       <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
@@ -30,7 +30,7 @@ const TableRow = ({ review }) => {
         </Link>
       </Table.Cell>
       <Table.Cell className="text-2xl">
-        <button>
+        <button onClick={() => handleDelete(_id)}>
           <AiOutlineCloseCircle />
         </button>
       </Table.Cell>
