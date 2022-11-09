@@ -15,7 +15,7 @@ const Services = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/services?perPage=${perPage}&currentPage=${currentPage},`
+      `https://air-doctor-server.vercel.app/services?perPage=${perPage}&currentPage=${currentPage},`
     )
       .then((res) => {
         return res.json();

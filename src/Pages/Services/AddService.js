@@ -5,13 +5,13 @@ import { AuthContext } from "../../Contexts/AuthProvider";
 import useSetTitle from "../../CustomHooks/useSetTitle";
 
 const AddService = () => {
-  useSetTitle('Add Service')
+  useSetTitle("Add Service");
   const { user } = useContext(AuthContext);
   const [service, setService] = useState({});
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch("http://localhost:5000/services", {
+    fetch("https://air-doctor-server.vercel.app/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -21,7 +21,7 @@ const AddService = () => {
       .then((res) => res.json())
       .then((data) => {
         toast.success("Service added successfully.");
-        event.target.reset()
+        event.target.reset();
       });
   };
 

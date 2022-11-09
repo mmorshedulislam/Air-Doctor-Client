@@ -9,7 +9,9 @@ const TableRow = ({ review, handleDelete }) => {
   const [service, setService] = useState([]);
   console.log(service);
   useEffect(() => {
-    fetch(`http://localhost:5000/serviceId?serviceId=${serviceId}`)
+    fetch(
+      `https://air-doctor-server.vercel.app/serviceId?serviceId=${serviceId}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setService(data);

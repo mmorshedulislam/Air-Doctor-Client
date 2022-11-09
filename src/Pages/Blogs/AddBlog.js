@@ -12,7 +12,7 @@ const AddBlog = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch("http://localhost:5000/blogs", {
+    fetch("https://air-doctor-server.vercel.app/blogs", {
       method: "POST",
       headers: {
         "content-type": "application/json",

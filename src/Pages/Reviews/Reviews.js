@@ -7,7 +7,9 @@ const Reviews = ({ service }) => {
   const { user } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/reviewServiceId?serviceId=${service._id}`)
+    fetch(
+      `https://air-doctor-server.vercel.app/reviewServiceId?serviceId=${service._id}`
+    )
       .then((res) => res.json())
       .then((data) => setReviews(data.reviews));
   }, [service._id]);

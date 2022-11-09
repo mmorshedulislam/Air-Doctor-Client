@@ -13,7 +13,7 @@ const AddReview = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://air-doctor-server.vercel.app/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",
