@@ -4,9 +4,11 @@ import TableRow from "./TableRow";
 import { AiFillCloseSquare } from "react-icons/ai";
 import { AuthContext } from "../../Contexts/AuthProvider";
 import toast from "react-hot-toast";
+import useSetTitle from "../../CustomHooks/useSetTitle";
 
 const MyReviewTable = () => {
   const { user } = useContext(AuthContext);
+  useSetTitle(`My Reviews - ${user?.displayName ? user?.displayName : ""}`);
   const [reviews, setReviews] = useState([]);
   const [count, setCount] = useState(0);
 

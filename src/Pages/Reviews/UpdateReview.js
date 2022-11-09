@@ -3,13 +3,14 @@ import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import useSetTitle from "../../CustomHooks/useSetTitle";
 
 const UpdateReview = () => {
   const review = useLoaderData();
   const { title, description, rating } = review;
   const { user } = useContext(AuthContext);
   const [updateReview, setUpdateReview] = useState({});
-
+  useSetTitle(`Update Review`);
   const handleSubmit = (event) => {
     event.preventDefault();
     fetch(`http://localhost:5000/updateReview/${review._id}`, {

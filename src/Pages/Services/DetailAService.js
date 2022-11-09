@@ -1,8 +1,10 @@
 import React from "react";
 import { AiOutlineStar } from "react-icons/ai";
+import useSetTitle from "../../CustomHooks/useSetTitle";
 
 const DetailAService = ({ service }) => {
-  const { _id, title, image, price, description } = service;
+  const { title, image, price, description } = service;
+  useSetTitle(`${title} Details`);
   return (
     <div className="px-5 lg:px-0">
       <div className="section-heading my-10">

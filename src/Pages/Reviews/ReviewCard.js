@@ -3,6 +3,7 @@ import { FaUserCircle } from "react-icons/fa";
 
 const ReviewCard = ({ review }) => {
   const { name, title, description, photo } = review;
+
   return (
     <div>
       <figure className="flex flex-col justify-center items-center p-8 text-center bg-white rounded-t-lg border-b border-gray-200 md:rounded-t-none md:rounded-tl-lg md:border-r dark:bg-gray-800 dark:border-gray-700">

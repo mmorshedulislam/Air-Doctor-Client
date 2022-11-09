@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import useSetTitle from "../../CustomHooks/useSetTitle";
 import Header from "../../Shared/Header";
 import ServiceCard from "../Services/ServiceCard";
 import Features from "./Features";
@@ -7,6 +8,7 @@ import OurCompany from "./OurCompany";
 
 const Home = () => {
   const services = useLoaderData();
+  useSetTitle("Home");
   return (
     <div>
       <Header></Header>

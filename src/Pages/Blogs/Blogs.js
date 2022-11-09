@@ -1,9 +1,11 @@
 import { Card } from "flowbite-react";
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import useSetTitle from "../../CustomHooks/useSetTitle";
 import BlogCard from "./BlogCard";
 
 const Blogs = () => {
+    useSetTitle('Blogs')
   const blogs = useLoaderData();
 
   return (

@@ -5,8 +5,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookSquare } from "react-icons/fa";
+import useSetTitle from "../../CustomHooks/useSetTitle";
 
 const Login = () => {
+  useSetTitle('Login')
   const { signIn, googleSignIn, facebookSignIn } = useContext(AuthContext);
 
   const location = useLocation();

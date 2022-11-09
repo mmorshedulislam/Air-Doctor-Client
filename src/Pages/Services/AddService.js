@@ -2,8 +2,10 @@ import { Label, Textarea, TextInput } from "flowbite-react";
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import useSetTitle from "../../CustomHooks/useSetTitle";
 
 const AddService = () => {
+  useSetTitle('Add Service')
   const { user } = useContext(AuthContext);
   const [service, setService] = useState({});
   const handleSubmit = (event) => {

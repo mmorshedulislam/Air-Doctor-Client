@@ -3,8 +3,10 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import useSetTitle from "../../CustomHooks/useSetTitle";
 
 const Register = () => {
+  useSetTitle("Register");
   const { register, profileUpdate } = useContext(AuthContext);
 
   const handleRegister = (event) => {

@@ -2,8 +2,10 @@ import { Label, Textarea, TextInput } from "flowbite-react";
 import React, { useContext, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import useSetTitle from "../../CustomHooks/useSetTitle";
 
 const AddBlog = () => {
+  useSetTitle("Add Blog");
   const { user } = useContext(AuthContext);
   const [blog, setBlog] = useState({});
   const emailRef = useRef();
