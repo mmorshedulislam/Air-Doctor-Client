@@ -37,7 +37,7 @@ const AddBlog = () => {
     setBlog(newBlog);
   };
   return (
-    <div>
+    <div className="m-5">
       <h2 className="text-center text-5xl my-6">Add a Blog</h2>
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">

@@ -14,8 +14,8 @@ const Home = () => {
       <Header></Header>
       <OurCompany></OurCompany>
       <div className="section-heading my-10">
-        <p className="text-2xl text-center text-[#9EC23C]">Our Services</p>
-        <h2 className="text-6xl text-center font-bold">
+        <p className="text-xl lg:text-2xl text-center text-[#9EC23C]">Our Services</p>
+        <h2 className="text-3xl lg:text-6xl text-center font-bold">
           {" "}
           Psychological Services
         </h2>

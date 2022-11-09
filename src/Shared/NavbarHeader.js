@@ -30,7 +30,7 @@ const NavbarHeader = () => {
             label={
               <Avatar
                 alt="Profile"
-                img={user ? user?.photoURL : "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
+                img={user?.photoURL ? user?.photoURL : "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
                 rounded={true}
               />
             }

@@ -9,7 +9,7 @@ const ServiceDetails = () => {
   return (
     <div>
       <DetailAService service={service}></DetailAService>
-      <hr class="my-8 w-full h-1 bg-gray-200 border-0 dark:bg-gray-700" />
+      <hr class="my-8 w-4/5 mx-auto h-1 rounded-md bg-gray-200 border-0 dark:bg-gray-700" />
       <Reviews service={service}></Reviews>
     </div>
   );

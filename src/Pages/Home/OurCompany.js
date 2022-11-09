@@ -17,7 +17,7 @@ const OurCompany = () => {
       </div>
       <div className="p-10">
         <p className="text-xl text-red-300">About Company</p>
-        <h2 className="text-5xl text-[#423837] font-semibold">
+        <h2 className="text-3xl lg:text-5xl text-[#423837] font-semibold">
           Welcome to our Physical Therapy Service
         </h2>
         <p className="my-4">Over 20 years Experience providing top Quality Therapy across world.</p>

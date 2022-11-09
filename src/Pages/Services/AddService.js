@@ -21,7 +21,7 @@ const AddService = () => {
       .then((res) => res.json())
       .then((data) => {
         toast.success("Service added successfully.");
-        console.log(data);
+        event.target.reset()
       });
   };
 
@@ -33,7 +33,7 @@ const AddService = () => {
     setService(newService);
   };
   return (
-    <div>
+    <div className="m-5">
       <h2 className="text-center text-5xl my-6">Add a Service</h2>
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
