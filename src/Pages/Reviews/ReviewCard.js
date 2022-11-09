@@ -16,7 +16,11 @@ const ReviewCard = ({ review }) => {
         <figcaption className="flex justify-center items-center space-x-3">
           <img
             className="w-9 h-9 rounded-full"
-            src={photo ? photo : <FaUserCircle />}
+            src={
+              !photo || photo === null
+                ? "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                : photo
+            }
             alt=""
           />
           <div className="space-y-0.5 font-medium dark:text-white text-left">

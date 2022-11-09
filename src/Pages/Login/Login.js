@@ -6,9 +6,10 @@ import { AuthContext } from "../../Contexts/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookSquare } from "react-icons/fa";
 import useSetTitle from "../../CustomHooks/useSetTitle";
+import jwtSign from "../../JWT/JWTSign";
 
 const Login = () => {
-  useSetTitle('Login')
+  useSetTitle("Login");
   const { signIn, googleSignIn, facebookSignIn } = useContext(AuthContext);
 
   const location = useLocation();
@@ -27,14 +28,17 @@ const Login = () => {
         toast.success("Successfully Log In");
         form.reset();
         navigate(from, { replace: true });
-        console.log(user);
+        jwtSign(user);
       })
       .catch((err) => console.log(err));
   };
 
   const handleGoogleLogin = () => {
     googleSignIn()
-      .then(() => {
+      .then((result) => {
+        const user = result.user;
+        jwtSign(user);
+        navigate(from, { replace: true });
         toast.success("Successfully login with Google");
       })
       .catch((err) => console.log(err));

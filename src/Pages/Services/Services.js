@@ -13,9 +13,11 @@ const Services = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/services?perPage=${perPage}&currentPage=${currentPage}`
+      `http://localhost:5000/services?perPage=${perPage}&currentPage=${currentPage},`
     )
-      .then((res) => res.json())
+      .then((res) => {
+        return res.json();
+      })
       .then((data) => {
         setCount(data.count);
         setServices(data.services);
@@ -61,10 +63,10 @@ const Services = () => {
           id="countries"
           required={true}
         >
-          <option value={4}>4</option>
-          <option value={8}>8</option>
-          <option value={12}>12</option>
-          <option value={20}>20</option>
+          <option value={3}>3</option>
+          <option value={6}>6</option>
+          <option value={9}>9</option>
+          <option value={15}>15</option>
         </Select>
       </div>
 

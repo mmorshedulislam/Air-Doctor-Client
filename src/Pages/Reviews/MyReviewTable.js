@@ -7,17 +7,25 @@ import toast from "react-hot-toast";
 import useSetTitle from "../../CustomHooks/useSetTitle";
 
 const MyReviewTable = () => {
-  const { user } = useContext(AuthContext);
-  useSetTitle(`My Reviews - ${user?.displayName ? user?.displayName : ""}`);
+  const { user, logOut } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
-  const [count, setCount] = useState(0);
+  useSetTitle(`My Reviews - ${user?.displayName ? user?.displayName : ""}`);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviewsEmail?email=${user?.email}`)
-      .then((res) => res.json())
+    fetch(`http://localhost:5000/reviewsEmail?email=${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("doctorToken")}`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          localStorage.removeItem("doctorToken");
+          return logOut();
+        }
+        return res.json();
+      })
       .then((data) => {
         setReviews(data.reviews);
-        setCount(data.count);
       });
   }, [user?.email]);
 
@@ -39,6 +47,7 @@ const MyReviewTable = () => {
   };
   return (
     <div>
+      <h2 className="text-center text-6xl mb-5">Your Reviews</h2>
       <Table striped={true}>
         <Table.Head>
           <Table.HeadCell>Service name</Table.HeadCell>

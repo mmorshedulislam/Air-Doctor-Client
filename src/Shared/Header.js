@@ -6,9 +6,9 @@ const Header = () => {
   return (
     <div className="banner my-10 mx-5 lg:mx-0">
       <div className="img-gradient rounded-lg">
-        {/* https://cdn.pixabay.com/photo/2022/10/31/18/44/spider-web-7560535_960_720.jpg */}
+        {/* https://medintu.in/wp-content/uploads/2021/07/Untitled-design-9-768x512.jpg */}
         <img
-          src="https://medintu.in/wp-content/uploads/2021/07/Untitled-design-9-768x512.jpg"
+          src="https://cdn.pixabay.com/photo/2022/10/16/20/21/storm-clouds-7526102_960_720.jpg"
           className="w-full max-h-screen rounded-lg"
           alt=""
         />

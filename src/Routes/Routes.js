@@ -7,7 +7,7 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import AddReview from "../Pages/Reviews/AddReview";
-import MyReviews from "../Pages/Reviews/MyReviews";
+import MyReviewTable from "../Pages/Reviews/MyReviewTable";
 import UpdateReview from "../Pages/Reviews/UpdateReview";
 import AddService from "../Pages/Services/AddService";
 import ServiceDetails from "../Pages/Services/ServiceDetails";
@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/blogs",
-        loader: () => fetch('http://localhost:5000/blogs'),
+        loader: () => fetch("http://localhost:5000/blogs"),
         element: <Blogs></Blogs>,
       },
       {
@@ -56,7 +56,7 @@ export const router = createBrowserRouter([
         path: "/myReviews",
         element: (
           <PrivateRoute>
-            <MyReviews></MyReviews>
+            <MyReviewTable></MyReviewTable>
           </PrivateRoute>
         ),
       },
@@ -71,9 +71,10 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: '/updateReview/:id', 
-        loader: ({params}) => fetch(`http://localhost:5000/reviewById/${params.id}`), 
-        element: <UpdateReview></UpdateReview>
+        path: "/updateReview/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/reviewById/${params.id}`),
+        element: <UpdateReview></UpdateReview>,
       },
       {
         path: "/login",

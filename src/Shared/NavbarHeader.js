@@ -8,7 +8,9 @@ const NavbarHeader = () => {
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
     logOut()
-      .then()
+      .then(() => {
+        localStorage.removeItem('doctorToken')
+      })
       .catch((err) => console.error(err));
   };
   return (

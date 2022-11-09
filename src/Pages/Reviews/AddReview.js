@@ -6,9 +6,9 @@ import { AuthContext } from "../../Contexts/AuthProvider";
 import useSetTitle from "../../CustomHooks/useSetTitle";
 
 const AddReview = () => {
-  useSetTitle('Add Review')
+  useSetTitle("Add Review");
   const service = useLoaderData().service;
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const [review, setReview] = useState({});
 
   const handleSubmit = (event) => {
@@ -17,10 +17,17 @@ const AddReview = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("doctorToken")}`,
       },
       body: JSON.stringify(review),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          localStorage.removeItem("doctorToken");
+          return logOut();
+        }
+        return res.json();
+      })
       .then((data) => {
         toast.success("Review added successfully.");
         console.log(data);
