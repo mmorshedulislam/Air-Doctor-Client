@@ -7,7 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebookSquare } from "react-icons/fa";
 
 const Login = () => {
-  const { signIn, googleSignIn } = useContext(AuthContext);
+  const { signIn, googleSignIn, facebookSignIn } = useContext(AuthContext);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -34,6 +34,14 @@ const Login = () => {
     googleSignIn()
       .then(() => {
         toast.success("Successfully login with Google");
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleFacebookSignIn = () => {
+    facebookSignIn()
+      .then(() => {
+        toast.success("Successfully login with Facebook.");
       })
       .catch((err) => console.log(err));
   };
@@ -91,7 +99,10 @@ const Login = () => {
           >
             <FcGoogle />
           </button>
-          <button className="text-3xl rounded-full border p-2 text-[#3b5998]">
+          <button
+            onClick={handleFacebookSignIn}
+            className="text-3xl rounded-full border p-2 text-[#3b5998]"
+          >
             <FaFacebookSquare />
           </button>
         </div>

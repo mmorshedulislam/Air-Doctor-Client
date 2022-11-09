@@ -29,8 +29,8 @@ const NavbarHeader = () => {
             inline={true}
             label={
               <Avatar
-                alt="User"
-                img={user ? user?.photoURL : <FaUserCircle />}
+                alt="Profile"
+                img={user ? user?.photoURL : "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
                 rounded={true}
               />
             }
