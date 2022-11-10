@@ -1,26 +1,23 @@
-# LEARNING FAIR
-### An education related site that offers various premium courses.
+# Air Doctor
 
-### We offer, 
-1. Web Development
-2. App Development
-3. Machine Learning
-4. Data Science
-5. Digital Marketing
-6. Graphics Design
+### It is a website that provides health services.
+
+This website provides services to solve various psychological problems.
 
 ## All features on this website
 
-* This website is a Single Page Application(SPA).
-* Authentication is used on this web site.
-* Where you can Sign up or Login with Email and Password. And you can also login with Google, Facebook and GitHub.
-* Course details are dynamically displayed on Course Details page and Checkout page.
-* If the user is not logged in, the checkout page is protected.
+- This site is a Single Page Application.
+- This site uses the Firebase authentication system. Where the user wants to use email and password and can also login with Google and Facebook.
+- Each service here is shown on a separate details page. Also, only the reviews of that service are shown. Not only that, Any user can add his/her own review after login.
+- A user can add a new Service and a new Blog after login.
+- The entire site is fully Responsive.
+- Users can only Delete and Update reviews that they have added.
+- Pagination is used in service pages.
+- An access token is issued to the user when logging in using JWT. That token is verified again to go to the My Review page. Check if the user is valid.
 
+## Live Website Link
 
-## Live Link
-
-Hosted in Firebase -> [Learning Fair](https://learning-fair-462f2.web.app/)
+Hosted in Firebase -> [Air Doctor](https://air-doctor-a80a1.web.app/)
 
 ## Context API
 
@@ -32,27 +29,32 @@ Documentation Link -> [Link](https://reactrouter.com/en/main/start/overview)
 
 ### Resources & Credits
 
-## Client Side Hosting 
+## Client Side Hosting
+
 Firebase -> [Firebase](https://firebase.google.com/)
 
 ## Server side Hosting
+
 Vercel -> [Vercel](https://vercel.com/)
 
-Tailwind and Daisy UI Components ->
-[Tailwind](https://tailwindcss.com/)/
-[daisyUI](https://daisyui.com/)
+## All Data hosted in MongoDB
+
+MongoDB -> [MongoDB](https://www.mongodb.com/atlas/database)
+
+## CSS Frameworks
+
+Tailwind CSS and React Flowbite library of Tailwind. ->
+[Tailwind](https://tailwindcss.com/)
+[Flowbite](https://flowbite-react.com/)
 
 ### Other Resources
 
-React-to-Print/PDF -> [react-to-print](https://github.com/gregnb/react-to-print)/
+React-photo-view -> [react-photo-view](https://react-photo-view.vercel.app/en-US)
 
-Icon -> [React Icons (FontAwesome)](https://react-icons.github.io/react-icons/icons?name=fa)/
+Icon -> [React Icons](https://react-icons.github.io/react-icons)
 
-Toast -> [React Hot Toast](https://react-hot-toast.com/)/
+Toast -> [React Hot Toast](https://react-hot-toast.com/)
 
-Course Photos -> [Vercel - (Custom API)](https://learning-platform-server-three.vercel.app/courses)/
+Service and Blog Photos -> [Google](https://google.com)
 
-Blog Photos -> [Vercel - (Custom API)](https://learning-platform-server-three.vercel.app/blogs)/
-
-FAQ -> [Vercel - Custom API](https://learning-platform-server-three.vercel.app/faq)/
 
