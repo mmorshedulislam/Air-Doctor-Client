@@ -13,7 +13,7 @@ const UpdateReview = () => {
   useSetTitle(`Update Review`);
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(`https://air-doctor-server.vercel.app/updateReview/${review._id}`, {
+    fetch(`http://localhost:5000/updateReview/${review._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

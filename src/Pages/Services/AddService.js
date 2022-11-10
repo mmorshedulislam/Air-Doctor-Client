@@ -11,7 +11,7 @@ const AddService = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch("https://air-doctor-server.vercel.app/services", {
+    fetch("http://localhost:5000/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",

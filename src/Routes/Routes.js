@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: () => fetch("https://air-doctor-server.vercel.app/service3"),
+        loader: () => fetch("http://localhost:5000/service3"),
         element: <Home></Home>,
       },
       {
@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
       {
         path: "/service/:id",
         loader: ({ params }) =>
-          fetch(`https://air-doctor-server.vercel.app/service/${params.id}`),
+          fetch(`http://localhost:5000/service/${params.id}`),
         element: <ServiceDetails></ServiceDetails>,
       },
       {
@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/blogs",
-        loader: () => fetch("https://air-doctor-server.vercel.app/blogs"),
+        loader: () => fetch("http://localhost:5000/blogs"),
         element: <Blogs></Blogs>,
       },
       {
@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
       {
         path: "/addReview/:id",
         loader: ({ params }) =>
-          fetch(`https://air-doctor-server.vercel.app/service/${params.id}`),
+          fetch(`http://localhost:5000/service/${params.id}`),
         element: (
           <PrivateRoute>
             <AddReview></AddReview>
@@ -73,7 +73,7 @@ export const router = createBrowserRouter([
       {
         path: "/updateReview/:id",
         loader: ({ params }) =>
-          fetch(`https://air-doctor-server.vercel.app/reviewById/${params.id}`),
+          fetch(`http://localhost:5000/reviewById/${params.id}`),
         element: <UpdateReview></UpdateReview>,
       },
       {
