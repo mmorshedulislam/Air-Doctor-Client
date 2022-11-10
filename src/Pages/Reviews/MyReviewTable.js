@@ -12,11 +12,14 @@ const MyReviewTable = () => {
   useSetTitle(`My Reviews - ${user?.displayName ? user?.displayName : ""}`);
   console.log(reviews);
   useEffect(() => {
-    fetch(`http://localhost:5000/reviewsEmail?email=${user?.email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("doctorToken")}`,
-      },
-    })
+    fetch(
+      `https://air-doctor-server.vercel.app/reviewsEmail?email=${user?.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("doctorToken")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           localStorage.removeItem("doctorToken");
@@ -32,7 +35,7 @@ const MyReviewTable = () => {
   const handleDelete = (id) => {
     const agree = window.confirm("Are you want to delete the review?");
     if (agree) {
-      fetch(`http://localhost:5000/review/${id}`, {
+      fetch(`https://air-doctor-server.vercel.app/review/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

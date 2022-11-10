@@ -15,7 +15,7 @@ const Services = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/services?perPage=${perPage}&currentPage=${currentPage},`
+      `https://air-doctor-server.vercel.app/services?perPage=${perPage}&currentPage=${currentPage},`
     )
       .then((res) => {
         return res.json();
@@ -68,8 +68,8 @@ const Services = () => {
         ))}
       </div>
 
-      <div id="select">
-        <div className="mb-2 block">
+      <div id="select" className="mx-5">
+        <div className="mb-2 block mx-3">
           <Label htmlFor="countries" value="Per Page Show" />
         </div>
         <Select
@@ -79,23 +79,13 @@ const Services = () => {
           required={true}
         >
           <option value={3}>3</option>
-          <option value={6}>6</option>
+          <option value={6} selected>
+            6
+          </option>
           <option value={9}>9</option>
           <option value={15}>15</option>
         </Select>
       </div>
-
-      {/*       <div className="flex items-center justify-center text-center">
-        <Pagination
-          currentPage={1}
-          layout="pagination"
-          onPageChange={onPageChange}
-          showIcons={true}
-          totalPages={1000}
-          previousLabel="Go back"
-          nextLabel="Go forward"
-        />
-      </div> */}
     </div>
   );
 };

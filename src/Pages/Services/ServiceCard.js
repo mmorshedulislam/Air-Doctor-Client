@@ -20,7 +20,7 @@ const ServiceCard = ({ service }) => {
           <p className="font-normal text-gray-700 dark:text-gray-400">
             {description.slice(0, 100)} ...
           </p>
-          <p className="flex items-center">
+          <p className="flex items-center my-3">
             Ratings:{" "}
             {[...Array(5)].map((star) => (
               <AiOutlineStar className="text-yellow-300 text-xl" />

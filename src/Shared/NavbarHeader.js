@@ -74,9 +74,23 @@ const NavbarHeader = () => {
           <Navbar.Link>
             <Link to={"/blogs"}>Blogs</Link>
           </Navbar.Link>
-          <Navbar.Link>
-            <Link to={"/login"}>Log In</Link>
-          </Navbar.Link>
+          {user ? (
+            <>
+              <Navbar.Link>
+                <Link to={"/myreviews"}>My Reviews</Link>
+              </Navbar.Link>
+              <Navbar.Link>
+                <Link to={"/addservice"}>Add Service</Link>
+              </Navbar.Link>
+              <Navbar.Link>
+                <Link onClick={handleLogOut}>Log Out</Link>
+              </Navbar.Link>
+            </>
+          ) : (
+            <Navbar.Link>
+              <Link to={"/login"}>Log In</Link>
+            </Navbar.Link>
+          )}
         </Navbar.Collapse>
       </Navbar>
     </div>

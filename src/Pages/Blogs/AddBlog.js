@@ -9,10 +9,11 @@ const AddBlog = () => {
   const { user } = useContext(AuthContext);
   const [blog, setBlog] = useState({});
   const emailRef = useRef();
-  const handleSubmit = (event) => {
-    event.preventDefault();
 
-    fetch("http://localhost:5000/blogs", {
+  const handleSubmit = (event) => {
+    // event.preventDefault();
+
+    fetch("https://air-doctor-server.vercel.app/blogs", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -32,10 +33,12 @@ const AddBlog = () => {
     const name = user?.displayName;
     const email = emailRef.current.value;
     const userImg = user?.photoURL;
-    const newBlog = { name, email, userImg, ...blog };
+    let dateField = new Date().getTime();
+    const newBlog = { name, email, userImg, dateField, ...blog };
     newBlog[field] = value;
     setBlog(newBlog);
   };
+
   return (
     <div className="m-5">
       <h2 className="text-center text-5xl my-6">Add a Blog</h2>

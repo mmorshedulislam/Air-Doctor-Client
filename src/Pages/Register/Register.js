@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 import useSetTitle from "../../CustomHooks/useSetTitle";
+import jwtSign from "../../JWT/JWTSign";
 
 const Register = () => {
   useSetTitle("Register");
@@ -24,7 +25,7 @@ const Register = () => {
         const user = result.user;
         toast.success("Successfully Registration");
         form.reset();
-        console.log(user);
+        jwtSign(user)
       })
       .catch((err) => {
         console.error(err);

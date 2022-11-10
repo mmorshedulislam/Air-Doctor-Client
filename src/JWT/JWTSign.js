@@ -3,7 +3,7 @@ const jwtSign = (user) => {
     email: user?.email,
   };
 
-  fetch("http://localhost:5000/jwt", {
+  fetch("https://air-doctor-server.vercel.app/jwt", {
     method: "POST",
     headers: {
       "content-type": "application/json",

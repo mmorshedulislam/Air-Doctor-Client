@@ -9,9 +9,9 @@ const AddService = () => {
   const { user } = useContext(AuthContext);
   const [service, setService] = useState({});
   const handleSubmit = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
 
-    fetch("http://localhost:5000/services", {
+    fetch("https://air-doctor-server.vercel.app/services", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -28,7 +28,8 @@ const AddService = () => {
   const handleInputBlur = (event) => {
     const field = event.target.name;
     const value = event.target.value;
-    const newService = { ...service };
+    const dateField = new Date().getTime();
+    const newService = { dateField, ...service };
     newService[field] = value;
     setService(newService);
   };
