@@ -10,7 +10,7 @@ const MyReviewTable = () => {
   const { user, logOut } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
   useSetTitle(`My Reviews - ${user?.displayName ? user?.displayName : ""}`);
-
+  console.log(reviews);
   useEffect(() => {
     fetch(`http://localhost:5000/reviewsEmail?email=${user?.email}`, {
       headers: {
@@ -47,27 +47,37 @@ const MyReviewTable = () => {
   };
   return (
     <div>
-      <h2 className="text-center text-6xl mb-5">Your Reviews</h2>
-      <Table striped={true}>
-        <Table.Head>
-          <Table.HeadCell>Service name</Table.HeadCell>
-          <Table.HeadCell>Review Title</Table.HeadCell>
-          <Table.HeadCell>Review Description</Table.HeadCell>
-          <Table.HeadCell>Update</Table.HeadCell>
-          <Table.HeadCell className="text-2xl">
-            <AiFillCloseSquare />
-          </Table.HeadCell>
-        </Table.Head>
-        <Table.Body className="divide-y">
-          {reviews.map((review) => (
-            <TableRow
-              key={review._id}
-              review={review}
-              handleDelete={handleDelete}
-            ></TableRow>
-          ))}
-        </Table.Body>
-      </Table>
+      {reviews.length === 0 ? (
+        <h2 className="text-center text-3xl lg:text-6xl my-5">
+          No Reviews were Added.
+        </h2>
+      ) : (
+        <h2 className="text-center text-3xl lg:text-6xl my-5">
+          Your Have {reviews.length} Reviews
+        </h2>
+      )}
+      {reviews.length > 0 && (
+        <Table striped={true}>
+          <Table.Head>
+            <Table.HeadCell>Service name</Table.HeadCell>
+            <Table.HeadCell>Review Title</Table.HeadCell>
+            <Table.HeadCell>Review Description</Table.HeadCell>
+            <Table.HeadCell>Update</Table.HeadCell>
+            <Table.HeadCell className="text-2xl">
+              <AiFillCloseSquare />
+            </Table.HeadCell>
+          </Table.Head>
+          <Table.Body className="divide-y">
+            {reviews.map((review) => (
+              <TableRow
+                key={review._id}
+                review={review}
+                handleDelete={handleDelete}
+              ></TableRow>
+            ))}
+          </Table.Body>
+        </Table>
+      )}
     </div>
   );
 };

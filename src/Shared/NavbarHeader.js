@@ -9,7 +9,7 @@ const NavbarHeader = () => {
   const handleLogOut = () => {
     logOut()
       .then(() => {
-        localStorage.removeItem('doctorToken')
+        localStorage.removeItem("doctorToken");
       })
       .catch((err) => console.error(err));
   };
@@ -32,7 +32,11 @@ const NavbarHeader = () => {
             label={
               <Avatar
                 alt="Profile"
-                img={user?.photoURL ? user?.photoURL : "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
+                img={
+                  user?.photoURL
+                    ? user?.photoURL
+                    : "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                }
                 rounded={true}
               />
             }
@@ -51,6 +55,9 @@ const NavbarHeader = () => {
             </Dropdown.Item>
             <Dropdown.Item>
               <Link to="/addService">Add Service</Link>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Link to="/addBlog">Add Blog</Link>
             </Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item onClick={handleLogOut}>Sign out</Dropdown.Item>
