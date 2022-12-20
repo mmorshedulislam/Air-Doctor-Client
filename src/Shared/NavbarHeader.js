@@ -25,45 +25,47 @@ const NavbarHeader = () => {
             />
           </Link>
         </Navbar.Brand>
-        <div className="flex md:order-2">
-          <Dropdown
-            arrowIcon={false}
-            inline={true}
-            label={
-              <Avatar
-                alt="Profile"
-                img={
-                  user?.photoURL
-                    ? user?.photoURL
-                    : "https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                }
-                rounded={true}
-              />
-            }
-          >
-            <Dropdown.Header>
-              <span className="block text-sm">
-                {user ? user?.displayName : "Username"}
-              </span>
-              <span className="block truncate text-sm font-medium">
-                {user ? user?.email : "user@mail.com"}
-              </span>
-            </Dropdown.Header>
-            <Dropdown.Item>Profile</Dropdown.Item>
-            <Dropdown.Item>
-              <Link to="myReviews">My Reviews</Link>{" "}
-            </Dropdown.Item>
-            <Dropdown.Item>
-              <Link to="/addService">Add Service</Link>
-            </Dropdown.Item>
-            <Dropdown.Item>
-              <Link to="/addBlog">Add Blog</Link>
-            </Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Item onClick={handleLogOut}>Sign out</Dropdown.Item>
-          </Dropdown>
-          <Navbar.Toggle />
-        </div>
+        {user && (
+          <div className="flex md:order-2">
+            <Dropdown
+              arrowIcon={false}
+              inline={true}
+              label={
+                <Avatar
+                  alt="Profile"
+                  img={
+                    user?.photoURL
+                      ? user?.photoURL
+                      : "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                  }
+                  rounded={true}
+                />
+              }
+            >
+              <Dropdown.Header>
+                <span className="block text-sm">
+                  {user ? user?.displayName : "Username"}
+                </span>
+                <span className="block truncate text-sm font-medium">
+                  {user ? user?.email : "user@mail.com"}
+                </span>
+              </Dropdown.Header>
+              <Dropdown.Item>Profile</Dropdown.Item>
+              <Dropdown.Item>
+                <Link to="myReviews">My Reviews</Link>{" "}
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Link to="/addService">Add Service</Link>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Link to="/addBlog">Add Blog</Link>
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item onClick={handleLogOut}>Sign out</Dropdown.Item>
+            </Dropdown>
+            <Navbar.Toggle />
+          </div>
+        )}
         <Navbar.Collapse>
           <Navbar.Link>
             <NavLink to={"/"}>Home</NavLink>
@@ -87,9 +89,14 @@ const NavbarHeader = () => {
               </Navbar.Link>
             </>
           ) : (
-            <Navbar.Link>
-              <Link to={"/login"}>Log In</Link>
-            </Navbar.Link>
+            <>
+              <Navbar.Link>
+                <Link to={"/login"}>Log In</Link>
+              </Navbar.Link>
+              <Navbar.Link>
+                <Link to={"/register"}>Register</Link>
+              </Navbar.Link>
+            </>
           )}
         </Navbar.Collapse>
       </Navbar>

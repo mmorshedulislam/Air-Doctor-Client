@@ -7,10 +7,12 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebookSquare } from "react-icons/fa";
 import useSetTitle from "../../CustomHooks/useSetTitle";
 import jwtSign from "../../JWT/JWTSign";
+import { useState } from "react";
 
 const Login = () => {
   useSetTitle("Login");
   const { signIn, googleSignIn, facebookSignIn } = useContext(AuthContext);
+  const [processing, setProcessing] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -22,15 +24,22 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
+    setProcessing(true);
     signIn(email, password)
       .then((result) => {
         const user = result.user;
         toast.success("Successfully Log In");
         form.reset();
+        setProcessing(false);
         navigate(from, { replace: true });
         jwtSign(user);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        const errorMessage = err?.code;
+        console.log(errorMessage);
+        setProcessing(false);
+        toast.error(errorMessage);
+      });
   };
 
   const handleGoogleLogin = () => {
@@ -52,8 +61,8 @@ const Login = () => {
       .catch((err) => console.log(err));
   };
   return (
-    <div>
-      <div className="md:w-1/2 mx-auto p-6 md:p-0">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-10">
+      <div className="w-full mx-auto p-6 md:p-0">
         <h2 className="font-bold text-4xl my-6">Log In</h2>
         <form onSubmit={handleSignIn} className="flex flex-col gap-4">
           <div>
@@ -88,7 +97,9 @@ const Login = () => {
               </Link>
             </Label>
           </div>
-          <Button type="submit">Log In</Button>
+          <Button disabled={processing} type="submit">
+            Log In
+          </Button>
         </form>
         {/* HR line */}
         <div class="inline-flex justify-center items-center w-full">
@@ -112,6 +123,13 @@ const Login = () => {
             <FaFacebookSquare />
           </button>
         </div>
+      </div>
+      <div className="w-full flex justify-center items-center">
+        <img
+          className="w-full"
+          src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?w=2000"
+          alt=""
+        />
       </div>
     </div>
   );
